@@ -1,6 +1,8 @@
 ---
 import NextJS from "./icons/NextJS.astro"
 import Tailwind from "./icons/Tailwind.astro"
+import Java from "./icons/Java.astro"
+import Angular from "./icons/Angular.astro"
 
 
 const TAGS = {
@@ -14,10 +16,35 @@ const TAGS = {
     class: "bg-[#003159] text-white",
     icon: Tailwind,
   },
+  JAVA: {
+    name: "Java",
+    class: "bg-black text-white",
+    icon: Java,
+
+  },
+
+  ANGULAR: {
+    name: "Angular",
+    class: "bg-black text-white",
+    icon: Angular,
+
+  }
 }
 const PROJECTS = [
+
+{
+  title: 
+  
+  "E-commerce-Spring-Angular: ",
+    description:
+      " This is a comprehensive e-commerce project developed with Spring Boot, Angular and MySQL. Includes creating user and administrator accounts, managing products and categories, shopping cart, applying coupon codes, and placing orders. It covers many aspects of a real e-commerce site, from product management to user interaction with the shopping cart and ordering.",
+    link: "https://github.com/Ciromontes/E-commerceSpring-Angular",
+    github: "https://github.com/pheralb/svgl",
+    video: "/ecom.mp4",
+    tags: [TAGS.JAVA, TAGS.ANGULAR],
+  },
   {
-    title: "Crud de Articulos de Venta",
+    title: "Crud of Sales Items",
     description:
       "This is a web application built from scratch using Next.js and Tailwind CSS. It’s a sales platform where users can create, read, update, and delete (CRUD) product listings. Each product listing includes an SVG logo of the brand. The application is optimized for SEO and performance, providing a fast and user-friendly experience.",
     link: "https://nextjs-mysql-crud-ciroalfa.vercel.app",
@@ -34,52 +61,52 @@ const PROJECTS = [
     image: "/ProyectoAgendaTuTarea.jpg",
     tags: [TAGS.NEXT],
   },
-  {
-  title: "User Directory: ",
-    description:
-      " This is a web application created using Next.js and Bootstrap CSS. It’s a user directory where a list of users along with their data and photos are displayed. The application uses the JSON Placeholder API to dynamically fetch user data. ",
-    link: "https://nesxt-user-projects.vercel.app/",
-    github: "https://github.com/pheralb/svgl",
-    image: "/ProyectoDirectoryUSers.jpg",
-    tags: [TAGS.NEXT],
-  },
+ 
 ]
 ---
 
 {
   
-  PROJECTS.map(({ image, title, description, tags, link }) => (
-    <article>
-      <h3 class="text-2xl font-semibold text-yellow-800 dark:text-yellow-200 mb-2">
-        {title}
-      </h3>
-      <p class="text-lg mb-4 text-pretty">
-        {description}{" "}
-        {link && (
-          <a href={link} target="_blank" rel="noopener noreferrer"
-          style={{ color: 'lightblue' }}>
-            Go to project
-          </a>
-        )}
-      </p>
-      <ul class="flex gap-x-2 flex-row mb-2">
-        {tags.map((tag) => (
-          <li>
-            <span
-              class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 border border-white/10`}
-            >
-              <tag.icon class="size-4" />
-              {tag.name}
-            </span>
-          </li>
-        ))}
-      </ul>
+  PROJECTS.map(({ image, video, title, description, tags, link }) => (
+  <article>
+    <h3 class="text-2xl font-semibold text-yellow-200 dark:text-yellow-200 mb-2">
+      {title}
+    </h3>
+    <p class="text-lg mb-4 text-pretty">
+      {description}{" "}
+      {link && (
+        <a href={link} target="_blank" rel="noopener noreferrer"
+        style={{ color: 'lightblue' }}>
+          Go to project
+        </a>
+      )}
+    </p>
+    <ul class="flex gap-x-2 flex-row mb-2">
+      {tags.map((tag) => (
+        <li>
+          <span
+            class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 border border-white/10`}
+          >
+            <tag.icon class="size-4" />
+            {tag.name}
+          </span>
+        </li>
+      ))}
+    </ul>
+    {video ? (
+      <video autoplay loop muted width="100%">
+        <source src={video} type="video/mp4" />
+        Tu navegador no soporta el elemento de video.
+      </video>
+    ) : (
       <img
         loading="lazy"
         class="rounded shadow-2xl shadow-white/10 aspect-video"
         src={image}
-        alt={`Captura de pantalla del proyecto ${image}`}
+        alt={`Captura de pantalla del proyecto ${title}`}
       />
-    </article>
-  ))
+    )}
+  </article>
+))
+
 }
