@@ -1,0 +1,85 @@
+---
+import NextJS from "./icons/NextJS.astro"
+import Tailwind from "./icons/Tailwind.astro"
+
+
+const TAGS = {
+  NEXT: {
+    name: "Next.js",
+    class: "bg-black text-white",
+    icon: NextJS,
+  },
+  TAILWIND: {
+    name: "Tailwind CSS",
+    class: "bg-[#003159] text-white",
+    icon: Tailwind,
+  },
+}
+const PROJECTS = [
+  {
+    title: "Crud de Articulos de Venta",
+    description:
+      "This is a web application built from scratch using Next.js and Tailwind CSS. It’s a sales platform where users can create, read, update, and delete (CRUD) product listings. Each product listing includes an SVG logo of the brand. The application is optimized for SEO and performance, providing a fast and user-friendly experience.",
+    link: "https://nextjs-mysql-crud-ciroalfa.vercel.app",
+    github: "https://github.com/pheralb/svgl",
+    image: "/ProyectoCrud.jpg",
+    tags: [TAGS.NEXT, TAGS.TAILWIND],
+  },
+  {
+    title: "Task Scheduler: ",
+    description:
+      "This is a web application built from scratch using Next.js and Tailwind CSS. It’s a task management platform where users can create, read, update, and delete (CRUD) tasks. The application connects to a MongoDB database to store and display tasks. ",
+    link: "https://agenda-tu-tarea.vercel.app/",
+    github: "https://github.com/pheralb/svgl",
+    image: "/ProyectoAgendaTuTarea.jpg",
+    tags: [TAGS.NEXT],
+  },
+  {
+  title: "User Directory: ",
+    description:
+      " This is a web application created using Next.js and Bootstrap CSS. It’s a user directory where a list of users along with their data and photos are displayed. The application uses the JSON Placeholder API to dynamically fetch user data. ",
+    link: "https://nesxt-user-projects.vercel.app/",
+    github: "https://github.com/pheralb/svgl",
+    image: "/ProyectoDirectoryUSers.jpg",
+    tags: [TAGS.NEXT],
+  },
+]
+---
+
+{
+  
+  PROJECTS.map(({ image, title, description, tags, link }) => (
+    <article>
+      <h3 class="text-2xl font-semibold text-yellow-800 dark:text-yellow-200 mb-2">
+        {title}
+      </h3>
+      <p class="text-lg mb-4 text-pretty">
+        {description}{" "}
+        {link && (
+          <a href={link} target="_blank" rel="noopener noreferrer"
+          style={{ color: 'lightblue' }}>
+            Go to project
+          </a>
+        )}
+      </p>
+      <ul class="flex gap-x-2 flex-row mb-2">
+        {tags.map((tag) => (
+          <li>
+            <span
+              class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 border border-white/10`}
+            >
+              <tag.icon class="size-4" />
+              {tag.name}
+            </span>
+          </li>
+        ))}
+      </ul>
+      <img
+        loading="lazy"
+        class="rounded shadow-2xl shadow-white/10 aspect-video"
+        src={image}
+        alt={`Captura de pantalla del proyecto ${image}`}
+      />
+    </article>
+  ))
+}
